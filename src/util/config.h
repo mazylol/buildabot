@@ -8,14 +8,13 @@
 #include <dpp/dpp.h>
 
 class Util {
-private:
+public:
     struct Presence {
         dpp::presence_status presence_status = dpp::ps_online;
         dpp::activity_type activity_type = dpp::at_game;
         std::string activity_description;
     };
 
-public:
     struct Config {
         std::string token;
         Presence presence;
