@@ -2,6 +2,7 @@
 #include <fmt/format.h>
 
 #include "util/config.h"
+#include "handlers/messagecreate/autoresponse.h"
 
 int main() {
     Util::Config config = Util::Config::load("config.yaml");
@@ -13,11 +14,7 @@ int main() {
     bot.on_message_create([&config](const dpp::message_create_t &event) {
         if (event.msg.author.is_bot()) return;
 
-        if (config.responses.find(event.msg.content) == config.responses.end()) {
-            return;
-        } else {
-            event.reply(dpp::message(config.responses.at(event.msg.content)));
-        }
+        autoresponse(event, config.responses);
     });
 
     bot.on_ready([&bot, &config](const dpp::ready_t &event) {

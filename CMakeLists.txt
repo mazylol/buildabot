@@ -39,7 +39,9 @@ FetchContent_MakeAvailable(fmt)
 
 add_executable(${PROJECT_NAME} src/main.cpp
         src/util/config.cpp
-        src/util/config.h)
+        src/util/config.h
+        src/handlers/messagecreate/autoresponse.cpp
+        src/handlers/messagecreate/autoresponse.h)
 target_link_libraries(${PROJECT_NAME} dpp fmt::fmt yaml-cpp::yaml-cpp)
 
 set(CMAKE_CXX_STANDARD 20)
